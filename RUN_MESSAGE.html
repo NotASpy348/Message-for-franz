@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @font-face {
+            font-family: Mojangles;
+            src: url("mojangles.ttf");
+        }
+        body {
+            margin: 0;
+            background: black;
+            overflow: hidden;
+            height: 100vh;
+        }
+        #startGif {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            top: calc(50% - 180px);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        #startGif.moveUp {
+        animation: gifMoveUp 1.5s ease-in forwards;
+        }
+        @keyframes gifMoveUp {
+            from {
+                top: calc(50% - 180px);
+                opacity: 1;
+            }
+            to  {
+                top: -200px;
+                opacity: 0;
+            }
+        }
+        #startButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: Mojangles;
+            font-size: 30px;
+            padding: 15px 30px;
+            background: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+        #startButton:hover {
+            background: black;
+        }
+        #pauseButton { 
+            position: fixed; 
+            bottom: 20px; 
+            left: 20px; 
+            font-family: Mojangles; 
+            font-size: 20px; 
+            padding: 8px 16px; 
+            background: black; 
+            color: white; 
+            border: 1px solid white; 
+            cursor: pointer; 
+            z-index: 20; 
+            display: none; 
+        }
+        #pauseButton:hover { 
+            background: black; 
+        }
+        #credits {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 100vh;
+            text-align: center;
+            color: white;
+            font-family: Mojangles;
+            display: none;
+            animation: creditsMove 110s linear forwards;
+            z-index: 2;
+        }
+        #credits p {
+            font-size: 27.5px;
+            margin: 20px 0;
+            white-space: normal;
+        }
+        #credits .big {
+            font-size: 40px;
+        }
+        @keyframes creditsMove {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(var(--scroll-distance));
+            }
+        }
+        .heart {
+            position: absolute;
+            left: -100px;
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            display: none;
+            white-space: nowrap;
+            z-index: 1;
+        }
+        .heart1 {
+            top: 10%;
+            animation: heartMove1 5s linear infinite;
+        }
+        .heart2 {
+            top: 25%;
+            animation: heartMove2 8s linear infinite;
+        }
+        .heart3 {
+            top: 50%;
+            animation: heartMove3 4s linear infinite;
+        }
+        .heart4 {
+            top: 75%;
+            animation: heartMove4 10s linear infinite;
+        }
+        .heart5 {
+            top: 90%;
+            animation: heartMove5 6s linear infinite;
+        }
+        .heart6 {
+            top: 33%;
+            animation: heartMove6 12s linear infinite;
+        }
+        @keyframes heartMove1 {
+            from {
+                left: -100px;
+            }
+            to {
+                left: 100%;
+            }
+        }
+        @keyframes heartMove2 {
+            from {
+                left: -100px;
+            }
+            to {
+                left: 100%;
+            }
+        }
+        @keyframes heartMove3 {
+            from {
+                left: -100px;
+            }
+            to {
+                left: 100%;
+            }
+        }
+        @keyframes heartMove4 {
+            from {
+                left: -100px;
+            }
+            to {
+                left: 100%;
+            }
+        }
+        @keyframes heartMove5 {
+            from {
+                left: -100px;
+            }
+            to {
+                left: 100%;
+            }
+        }
+        @keyframes heartMove6 {
+            from {
+                left: -100px;
+            }
+            to {
+                left: 100%;
+            }
+        }
+        .showHeart {
+            display: block;
+        }
+        .showCredits {
+            display: block !important;
+        }
+        .paused {
+            animation-play-state: paused !important;
+        }
+    </style>
+</head>
+<body>
+    <img id="startGif" src="miffy.gif">
+    <button id="startButton">
+        click me please ):
+    </button>
+    <button id="pauseButton">pause?</button>
+    <div id="credits">
+        <p class="big"><img src="heart.png" alt="&lt;3" style="width: 20px; height: 20px;margin-top: 10px;"> dear franz <img src="heart.png" alt="&lt;3" style="width: 20px; height: 20px;margin-top: 10px;"></p>
+        <p>i read your message more than once</p>
+        <p>and every time i read it,</p>
+        <p>i find another part of myself in the things you said.</p>
+        <p>not because i think you're wrong,</p>
+        <p>but because i realized how many things you were carrying quietly</p>
+        <p>while i was too busy trying to understand my own feelings,</p>
+        <p> </p>
+        <p class="big">i'm sorry.</p>
+        <p> </p>
+        <p>i'm sorry for the days when you were tired and</p>
+        <p>i made your tiredness feel like something i had to be afraid of.</p>
+        <p>i'm sorry for the times when you were hurting and,</p>
+        <p>instead of becoming a place where you could rest,</p>
+        <p>i became someone who was hurting alongside you.</p>
+        <p> </p>
+        <p class="big">you shouldn't have had to be okay just to make me okay.</p>
+        <p> </p>
+        <p>i became so afraid of losing you that i forgot that loving</p>
+        <p>someone also means giving them somewhere to breathe.</p>
+        <p>i held onto every change in your tone, every distance,</p>
+        <p>every quiet moment, and sometimes i let my fear</p>
+        <p>speak louder than what you were actually telling me.</p>
+        <p> </p>
+        <p>and i know my notes and my reposts probably made that worse.</p>
+        <p>you were trying to understand me through pieces of things i left scattered online,</p>
+        <p>trying to figure out whether there was something behind every word.</p>
+        <p>i never wanted you to feel like you had to search for hidden meanings</p>
+        <p>just to understand what was happening inside my head.</p>
+        <p> </p>
+        <p>if something is wrong with me, i should tell you.</p>
+        <p>you shouldn't have to decode me.</p>
+        <p>and when you said that you questioned whether i only liked you</p>
+        <p>when things were convenient, that one stayed with me.</p>
+        <p>because i don't want my love for you to exist only in the easy parts of you.</p>
+        <p>i don't want you to feel like your sadness makes you harder to love.</p>
+        <p>you're still you on the days when you don't have the strength to give anything back.</p>
+        <p>i should've understood that sooner.</p>
+        <p> </p>
+        <p>you told me you reached out again because you believed i was worth another chance.</p>
+        <p class="big">franz, you were worth another chance to me too.</p>
+        <p> </p>
+        <p>i'm sorry that it took me too long to respond.</p>
+        <p>i hesitated because i didn't know how to express what i was feeling.</p>
+        <p>i didn't know exactly what would happen after that.</p>
+        <p>maybe i was scared too.</p>
+        <p>but somewhere in me, i still believed</p>
+        <p>there was something between us that deserved to be understood</p>
+        <p> </p>
+        <p>i know you changed for me.</p>
+        <p>i know you adjusted.</p>
+        <p>i know you gave things that i probably didn't acknowledge enough.</p>
+        <p>i'm sorry i made you wonder whether i noticed.</p>
+        <p>i did.</p>
+        <p>maybe i was simply too caught up in my own fears to show you that i did.</p>
+        <p> </p>
+        <p>and about everyone else,</p>
+        <p>i don't want you carrying the weight of people</p>
+        <p>who aren't even part of what we feel between us.</p>
+        <p>i can listen to my friends.</p>
+        <p>i can hear their opinions.</p>
+        <p>but they aren't the ones</p>
+        <p>who get to decide what you mean to me.</p>
+        <p>that's something i was too stupid to realize.</p>
+        <p>i don't want you fighting for your place in my life.</p>
+        <p>i want you to know that you already have one.</p>
+        <p> </p>
+        <p>i know we won't suddenly become perfect because we're trying again.</p>
+        <p>there will still be misunderstandings.</p>
+        <p>there will still be days when one of us doesn't know what to say.</p>
+        <p>but i think the difference this time should be that</p>
+        <p>we don't immediately see those moments as signs that we're falling apart.</p>
+        <p> </p>
+        <p>we talk,</p>
+        <p>we listen,</p>
+        <p>we give each other room,</p>
+        <p>and we try again.</p>
+        <p> </p>
+        <p>not because we're afraid of losing each other,</p>
+        <p>but because we're choosing each other while</p>
+        <p>still knowing that we're both imperfect.</p>
+        <p> </p>
+        <p>you gave me another chance once before,</p>
+        <p>and i don't want to take this one for granted.</p>
+        <p>so if you're willing to walk forward with me again,</p>
+        <p>i'll walk with you.</p>
+        <p>slowly, honestly, and without pretending</p>
+        <p>that everything is already okay.</p>
+        <p>we'll make it okay together.</p>
+        <p> </p>
+        <p> </p>
+        <p> </p>
+        <p> </p>
+        <p>sincerely, aki</p>
+        <p>-<img src="heart2.png" alt="&lt;3" style="width: 20px; height: 20px;margin-top: 10px;"></p>
+    </div>
+    <img class="heart heart1" src="heart.png" alt="&lt;3">
+    <img class="heart heart2" src="heart.png" alt="&lt;3">
+    <img class="heart heart3" src="heart.png" alt="&lt;3">
+    <img class="heart heart4" src="heart.png" alt="&lt;3">
+    <img class="heart heart5" src="heart.png" alt="&lt;3">
+    <img class="heart heart6" src="heart.png" alt="&lt;3">
+    <audio id="backgroundMusic" src="excuse.mp3" loop></audio>
+<script>
+    const button = document.getElementById("startButton");
+    const credits = document.getElementById("credits");
+    const hearts = document.querySelectorAll(".heart");
+    const pauseButton = document.getElementById("pauseButton");
+    const music = document.getElementById("backgroundMusic");
+    let paused = false;
+    let started = false;
+    button.addEventListener("click", function() {
+        document.documentElement.requestFullscreen();
+        document.getElementById("startGif").classList.add("moveUp");
+        button.style.display = "none";
+        music.play();
+        credits.classList.add("showCredits");
+        hearts.forEach(function(heart) {
+            heart.classList.add("showHeart");
+        });
+        pauseButton.style.display = "block";
+        started = true;
+        requestAnimationFrame(function() {
+            const creditHeight = credits.offsetHeight;
+            const screenHeight = window.innerHeight;
+            const scrollDistance =
+                -(creditHeight + screenHeight);
+            credits.style.setProperty(
+                "--scroll-distance",
+                scrollDistance + "px"
+            );
+            const duration =
+                (creditHeight + screenHeight) / 40;
+            credits.style.animationDuration =
+                duration + "s";
+            credits.classList.add("creditRoll");
+        });
+    });
+    function togglePause() {
+        if (!started) return;
+        paused = !paused;
+        credits.classList.toggle("paused", paused);
+        hearts.forEach(function(heart) {
+            heart.classList.toggle("paused", paused);
+        });
+        if (paused) {
+            music.pause();
+            pauseButton.textContent = "resume?";
+        } else {
+            music.play();
+            pauseButton.textContent = "pause?";
+        }
+    }
+    pauseButton.addEventListener("click", function() {
+        togglePause();
+    });
+    document.addEventListener("keydown", function(event) {
+        if (event.code === "Space" && started) {
+            event.preventDefault();
+            togglePause();
+        }
+    });
+    </script>
+</body>
+</html>
